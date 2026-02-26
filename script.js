@@ -56,37 +56,76 @@ clearBtn.addEventListener("click", ()=>{
 numBtns.forEach(num =>{
     num.addEventListener("click", function(){
         if(inputs.operator === null){
-            inputNum1.push(this.textContent)
+            inputNum1.push(Number(this.textContent))
             display.textContent = inputNum1.join("")
         }
         else{
-            inputNum2.push(this.textContent)
+            inputNum2.push(Number(this.textContent))
             display.textContent = inputNum2.join("")
         }
     } )
 })
 
 addBtn.addEventListener("click", ()=>{
+    if(inputs.operator === null){
     inputs.operator = "+"
     display.textContent = inputs.operator
+    }
+    else{
+        let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+        display.textContent = result;
+        inputNum1 = [result]
+        inputs.operator = "+";
+        inputNum2.length = 0;
+    }
 })
 
 subtractBtn.addEventListener("click", ()=>{
+    if(inputs.operator === null){
     inputs.operator = "-"
     display.textContent = inputs.operator
+    }
+    else{
+        let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+        display.textContent = result;
+        inputNum1 = [result]
+        inputs.operator = "-";
+        inputNum2.length = 0;
+    }
 })
 
 multiplyBtn.addEventListener("click", ()=>{
+    if(inputs.operator === null){
     inputs.operator = "*"
     display.textContent = inputs.operator
+    }
+    else{
+        let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+        display.textContent = result;
+        inputNum1 = [result]
+        inputs.operator = "*";
+        inputNum2.length = 0;
+    }
 })
 
 divideBtn.addEventListener("click", ()=>{
+    if(inputs.operator === null){
     inputs.operator = "/"
     display.textContent = inputs.operator
+    }
+    else{
+        let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+        display.textContent = result;
+        inputNum1 = [result]
+        inputs.operator = "/";
+        inputNum2.length = 0;
+    }
 })
 
 equalsBtn.addEventListener("click", ()=>{
     let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
     display.textContent = result;
+    inputNum1 = [result]
+    inputs.operator = null;
+    inputNum2.length = 0;
 })
