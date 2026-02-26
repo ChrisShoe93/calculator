@@ -53,6 +53,7 @@ clearBtn.addEventListener("click", ()=>{
     inputs.operator = null;
     inputNum2.length = 0;
     display.textContent = null;
+    opDisplay.textContent = "?"
 })
 
 numBtns.forEach(num =>{
