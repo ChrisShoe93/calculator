@@ -1,0 +1,1 @@
+This project will be a functional calculator with a GUI made using HTML, CSS, and Javascript.
