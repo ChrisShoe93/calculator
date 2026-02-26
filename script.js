@@ -11,6 +11,7 @@ function multiply(a, b){
 }
 
 function divide(a, b){
+    if(b === 0){return "nice try :)"}
     return a / b;
 }
 
@@ -38,6 +39,7 @@ let inputs = {
 
 
 const display = document.querySelector(".display")
+const opDisplay = document.querySelector(".opDisplay")
 const clearBtn = document.querySelector(".clear")
 const numBtns = document.querySelectorAll(".num")
 const addBtn = document.querySelector(".add")
@@ -50,11 +52,14 @@ clearBtn.addEventListener("click", ()=>{
     inputNum1.length = 0;
     inputs.operator = null;
     inputNum2.length = 0;
-    display.textContent = "Hello";
+    display.textContent = null;
 })
 
 numBtns.forEach(num =>{
     num.addEventListener("click", function(){
+        if(inputs.operator === null && display.textContent !==null){
+            inputNum1.length = 0;
+        }
         if(inputs.operator === null){
             inputNum1.push(Number(this.textContent))
             display.textContent = inputNum1.join("")
@@ -69,13 +74,14 @@ numBtns.forEach(num =>{
 addBtn.addEventListener("click", ()=>{
     if(inputs.operator === null){
     inputs.operator = "+"
-    display.textContent = inputs.operator
+    opDisplay.textContent = inputs.operator
     }
     else{
         let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
         display.textContent = result;
         inputNum1 = [result]
         inputs.operator = "+";
+        opDisplay.textContent = inputs.operator
         inputNum2.length = 0;
     }
 })
@@ -83,13 +89,14 @@ addBtn.addEventListener("click", ()=>{
 subtractBtn.addEventListener("click", ()=>{
     if(inputs.operator === null){
     inputs.operator = "-"
-    display.textContent = inputs.operator
+    opDisplay.textContent = inputs.operator
     }
     else{
         let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
         display.textContent = result;
         inputNum1 = [result]
         inputs.operator = "-";
+        opDisplay.textContent = inputs.operator
         inputNum2.length = 0;
     }
 })
@@ -97,13 +104,14 @@ subtractBtn.addEventListener("click", ()=>{
 multiplyBtn.addEventListener("click", ()=>{
     if(inputs.operator === null){
     inputs.operator = "*"
-    display.textContent = inputs.operator
+    opDisplay.textContent = inputs.operator
     }
     else{
         let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
         display.textContent = result;
         inputNum1 = [result]
         inputs.operator = "*";
+        opDisplay.textContent = inputs.operator
         inputNum2.length = 0;
     }
 })
@@ -111,13 +119,14 @@ multiplyBtn.addEventListener("click", ()=>{
 divideBtn.addEventListener("click", ()=>{
     if(inputs.operator === null){
     inputs.operator = "/"
-    display.textContent = inputs.operator
+    opDisplay.textContent = inputs.operator
     }
     else{
         let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
         display.textContent = result;
         inputNum1 = [result]
         inputs.operator = "/";
+        opDisplay.textContent = inputs.operator
         inputNum2.length = 0;
     }
 })
@@ -125,7 +134,8 @@ divideBtn.addEventListener("click", ()=>{
 equalsBtn.addEventListener("click", ()=>{
     let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
     display.textContent = result;
-    inputNum1 = [result]
+    opDisplay.textContent = "?";
+    inputNum1 = [result];
     inputs.operator = null;
     inputNum2.length = 0;
 })
