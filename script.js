@@ -29,6 +29,7 @@ function operate(op, a, b){
 
 let inputNum1 = []
 let inputNum2 = []
+let finalClear = false;
 
 let inputs = {
     num1: inputNum1,
@@ -58,8 +59,9 @@ clearBtn.addEventListener("click", ()=>{
 
 numBtns.forEach(num =>{
     num.addEventListener("click", function(){
-        if(inputs.operator === null && display.textContent !==null){
-            inputNum1.length = 0;
+        if(finalClear === true){
+           inputNum1.length = 0;
+           finalClear = false;
         }
         if(inputs.operator === null){
             inputNum1.push(Number(this.textContent))
@@ -139,4 +141,5 @@ equalsBtn.addEventListener("click", ()=>{
     inputNum1 = [result];
     inputs.operator = null;
     inputNum2.length = 0;
+    finalClear = true;
 })

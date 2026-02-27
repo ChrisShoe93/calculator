@@ -1,0 +1,60 @@
+.container{
+    box-sizing: border-box;
+    background-color: gray;
+    height: 50vw;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    border-style: ridge;
+    border-radius: 20px;
+    border-width: 8px;
+    border-color: black;
+}
+
+.displayContainer{
+    box-sizing: border-box;
+    border-style: dashed;
+    border-color: blue;
+    border-width: 1px;
+    flex: 1;
+    display: flex;
+    padding-left: 20px;
+}
+
+.display{
+    box-sizing: border-box;
+    border-style: dashed;
+    border-color: green;
+    border-width: 1px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 25px;
+}
+
+.opDisplay{
+    box-sizing: border-box;
+    border-style: dashed;
+    border-color: green;
+    border-width: 1px;
+    width: 50px;
+}
+
+.row{
+    box-sizing: border-box;
+    border-style: dashed;
+    border-color: red;
+    border-width: 1px;
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+}
+
+.num, .op, .clear, .equals{
+    flex: 1;
+    border-radius: 25px;
+    margin: 5px;
+    font-size: 25px;
+    font-weight: 700;
+}
