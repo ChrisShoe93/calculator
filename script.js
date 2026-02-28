@@ -29,13 +29,10 @@ function operate(op, a, b){
 
 let inputNum1 = []
 let inputNum2 = []
+let operator = null
 let finalClear = false;
 
-let inputs = {
-    num1: inputNum1,
-    operator: null,
-    num2: inputNum2,
-}
+
 
 
 
@@ -51,7 +48,7 @@ const equalsBtn = document.querySelector(".equals")
 
 clearBtn.addEventListener("click", ()=>{
     inputNum1.length = 0;
-    inputs.operator = null;
+    operator = null;
     inputNum2.length = 0;
     display.textContent = null;
     opDisplay.textContent = ""
@@ -63,7 +60,7 @@ numBtns.forEach(num =>{
            inputNum1.length = 0;
            finalClear = false;
         }
-        if(inputs.operator === null){
+        if(operator === null){
             inputNum1.push(Number(this.textContent))
             display.textContent = inputNum1.join("")
         }
@@ -76,74 +73,74 @@ numBtns.forEach(num =>{
 
 addBtn.addEventListener("click", ()=>{
     if(finalClear === true){ finalClear = false;}
-    if(inputs.operator === null){
-    inputs.operator = "+"
-    opDisplay.textContent = inputs.operator
+    if(operator === null){
+    operator = "+"
+    opDisplay.textContent = operator
     }
     else{
-        let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+        let result = operate(operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
         display.textContent = result;
         inputNum1 = [result]
-        inputs.operator = "+";
-        opDisplay.textContent = inputs.operator
+        operator = "+";
+        opDisplay.textContent = operator
         inputNum2.length = 0;
     }
 })
 
 subtractBtn.addEventListener("click", ()=>{
     if(finalClear === true){ finalClear = false;}
-    if(inputs.operator === null){
-    inputs.operator = "-"
-    opDisplay.textContent = inputs.operator
+    if(operator === null){
+    operator = "-"
+    opDisplay.textContent = operator
     }
     else{
-        let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+        let result = operate(operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
         display.textContent = result;
         inputNum1 = [result]
-        inputs.operator = "-";
-        opDisplay.textContent = inputs.operator
+        operator = "-";
+        opDisplay.textContent = operator
         inputNum2.length = 0;
     }
 })
 
 multiplyBtn.addEventListener("click", ()=>{
     if(finalClear === true){ finalClear = false;}
-    if(inputs.operator === null){
-    inputs.operator = "*"
-    opDisplay.textContent = inputs.operator
+    if(operator === null){
+    operator = "*"
+    opDisplay.textContent = operator
     }
     else{
-        let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+        let result = operate(operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
         display.textContent = result;
         inputNum1 = [result]
-        inputs.operator = "*";
-        opDisplay.textContent = inputs.operator
+        operator = "*";
+        opDisplay.textContent = operator
         inputNum2.length = 0;
     }
 })
 
 divideBtn.addEventListener("click", ()=>{
     if(finalClear === true){ finalClear = false;}
-    if(inputs.operator === null){
-    inputs.operator = "/"
-    opDisplay.textContent = inputs.operator
+    if(operator === null){
+    operator = "/"
+    opDisplay.textContent = operator
     }
     else{
-        let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+        let result = operate(operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
         display.textContent = result;
         inputNum1 = [result]
-        inputs.operator = "/";
-        opDisplay.textContent = inputs.operator
+        operator = "/";
+        opDisplay.textContent = operator
         inputNum2.length = 0;
     }
 })
 
 equalsBtn.addEventListener("click", ()=>{
-    let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
+    let result = operate(operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
     display.textContent = result;
     opDisplay.textContent = "";
     inputNum1 = [result];
-    inputs.operator = null;
+    operator = null;
     inputNum2.length = 0;
     finalClear = true;
 })
