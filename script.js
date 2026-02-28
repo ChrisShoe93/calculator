@@ -54,7 +54,7 @@ clearBtn.addEventListener("click", ()=>{
     inputs.operator = null;
     inputNum2.length = 0;
     display.textContent = null;
-    opDisplay.textContent = "?"
+    opDisplay.textContent = ""
 })
 
 numBtns.forEach(num =>{
@@ -75,6 +75,7 @@ numBtns.forEach(num =>{
 })
 
 addBtn.addEventListener("click", ()=>{
+    if(finalClear === true){ finalClear = false;}
     if(inputs.operator === null){
     inputs.operator = "+"
     opDisplay.textContent = inputs.operator
@@ -90,6 +91,7 @@ addBtn.addEventListener("click", ()=>{
 })
 
 subtractBtn.addEventListener("click", ()=>{
+    if(finalClear === true){ finalClear = false;}
     if(inputs.operator === null){
     inputs.operator = "-"
     opDisplay.textContent = inputs.operator
@@ -105,6 +107,7 @@ subtractBtn.addEventListener("click", ()=>{
 })
 
 multiplyBtn.addEventListener("click", ()=>{
+    if(finalClear === true){ finalClear = false;}
     if(inputs.operator === null){
     inputs.operator = "*"
     opDisplay.textContent = inputs.operator
@@ -120,6 +123,7 @@ multiplyBtn.addEventListener("click", ()=>{
 })
 
 divideBtn.addEventListener("click", ()=>{
+    if(finalClear === true){ finalClear = false;}
     if(inputs.operator === null){
     inputs.operator = "/"
     opDisplay.textContent = inputs.operator
@@ -137,7 +141,7 @@ divideBtn.addEventListener("click", ()=>{
 equalsBtn.addEventListener("click", ()=>{
     let result = operate(inputs.operator, Number(inputNum1.join("")), Number(inputNum2.join("")))
     display.textContent = result;
-    opDisplay.textContent = "?";
+    opDisplay.textContent = "";
     inputNum1 = [result];
     inputs.operator = null;
     inputNum2.length = 0;
